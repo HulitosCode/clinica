@@ -33,45 +33,46 @@ import {
 import { authClient } from "@/lib/auth-client";
 
 const items = [
-    {
-        title: "Dashboard",
-        url: "/dashboard",
-        icon: LayoutDashboard,
-    },
-    {
-        title: "Agendamentos",
-        url: "/appointments",
-        icon: CalendarDays,
-    },
-    {
-        title: "Medicos",
-        url: "/doctors",
-        icon: Stethoscope,
-    },
-    {
-        title: "Pacientes",
-        url: "/patients",
-        icon: UsersRound,
-    }
-]
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "Agendamentos",
+    url: "/appointments",
+    icon: CalendarDays,
+  },
+  {
+    title: "Medicos",
+    url: "/doctors",
+    icon: Stethoscope,
+  },
+  {
+    title: "Pacientes",
+    url: "/patients",
+    icon: UsersRound,
+  },
+];
 
 export function AppSidebar() {
-    const router = useRouter()
-    // const session = authClient.useSession()
-    const pathname = usePathname()
+  const router = useRouter();
+  // Pegamos a session do usuario junto com seu email e clinica criada com base no seu id
+  const session = authClient.useSession();
+  const pathname = usePathname();
 
-    const handleSignOut = async () => {
-        await authClient.signOut({
-            fetchOptions: {
-                onSuccess: () => {
-                    router.push("/authentication")
-                }
-            }
-        })
-    }
+  const handleSignOut = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/authentication");
+        },
+      },
+    });
+  };
 
-    return (
-        <Sidebar>
+  return (
+    <Sidebar>
       <SidebarHeader className="border-b p-4">
         <Image src="/logo.svg" alt="Doutor Agenda" width={136} height={28} />
       </SidebarHeader>
@@ -103,14 +104,16 @@ export function AppSidebar() {
                   <Avatar>
                     <AvatarFallback>F</AvatarFallback>
                   </Avatar>
-                  {/* <div>
+                  <div>
                     <p className="text-sm">
+                      {/* pagamos os dados da session do usuario que criou a clinica e o nome da clinica */}
                       {session.data?.user?.clinic?.name}
                     </p>
                     <p className="text-muted-foreground text-sm">
+                      {/* Pegamos o email do usuario */}
                       {session.data?.user.email}
                     </p>
-                  </div> */}
+                  </div>
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -124,6 +127,5 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-    )
-
+  );
 }
