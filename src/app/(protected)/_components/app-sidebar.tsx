@@ -2,6 +2,7 @@
 
 import {
   CalendarDays,
+  Gem,
   LayoutDashboard,
   LogOut,
   Stethoscope,
@@ -44,7 +45,7 @@ const items = [
     icon: CalendarDays,
   },
   {
-    title: "Medicos",
+    title: "Médicos",
     url: "/doctors",
     icon: Stethoscope,
   },
@@ -57,7 +58,6 @@ const items = [
 
 export function AppSidebar() {
   const router = useRouter();
-  // Pegamos a session do usuario junto com seu email e clinica criada com base no seu id
   const session = authClient.useSession();
   const pathname = usePathname();
 
@@ -70,7 +70,6 @@ export function AppSidebar() {
       },
     });
   };
-
   return (
     <Sidebar>
       <SidebarHeader className="border-b p-4">
@@ -80,7 +79,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Menu Principal</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-3">
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={pathname === item.url}>
@@ -91,6 +90,24 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Outros</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/subscription"}
+                >
+                  <Link href="/subscription">
+                    <Gem />
+                    <span>Assinatura</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -106,11 +123,9 @@ export function AppSidebar() {
                   </Avatar>
                   <div>
                     <p className="text-sm">
-                      {/* pagamos os dados da session do usuario que criou a clinica e o nome da clinica */}
                       {session.data?.user?.clinic?.name}
                     </p>
                     <p className="text-muted-foreground text-sm">
-                      {/* Pegamos o email do usuario */}
                       {session.data?.user.email}
                     </p>
                   </div>
