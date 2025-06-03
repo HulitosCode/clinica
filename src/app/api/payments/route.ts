@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       amount: body.amount,
       reference: body.reference,
       description: body.description,
-      return_url: `${process.env.BASE_URL}/payment/success`,
+      return_url: `${process.env.BASE_URL}/subscription/success`,
       callback_url: `${process.env.BASE_URL}/api/paysuite/webhook`,
     }),
   });
