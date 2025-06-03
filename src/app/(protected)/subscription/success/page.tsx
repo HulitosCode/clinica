@@ -16,9 +16,9 @@ export default function VerifySuccessPage() {
   }, [router]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 to-white">
-      <div className="bg-white shadow-xl p-8 rounded-2xl text-center space-y-4 max-w-md w-full animate-fade-in">
-        <CheckCircle className="mx-auto text-zinc-900 w-14 h-14" />
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 to-white">
+      <div className="animate-fade-in w-full max-w-md space-y-4 rounded-2xl bg-white p-8 text-center shadow-xl">
+        <CheckCircle className="mx-auto h-14 w-14 text-zinc-900" />
         <h1 className="text-2xl font-semibold text-zinc-900">
           Plano assinado com sucesso!
         </h1>

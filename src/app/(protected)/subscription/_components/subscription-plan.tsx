@@ -31,7 +31,7 @@ const SubscriptionPlan = () => {
           Para profissionais autônomos ou pequenas clínicas
         </p>
         <div className="flex items-baseline">
-          <span className="text-3xl font-bold text-gray-900">899 MZN</span>
+          <span className="text-3xl font-bold text-gray-900">999 MZN</span>
           <span className="ml-1 text-gray-600">/ mês</span>
         </div>
       </CardHeader>

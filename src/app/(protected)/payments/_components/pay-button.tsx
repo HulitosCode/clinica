@@ -40,11 +40,7 @@ export function PayButton() {
   };
 
   return (
-    <Button
-      onClick={handlePayment}
-      disabled={loading}
-      className="w-full"
-    >
+    <Button onClick={handlePayment} disabled={loading} className="w-full">
       {loading ? "Processando..." : "Assinar plano"}
     </Button>
   );
