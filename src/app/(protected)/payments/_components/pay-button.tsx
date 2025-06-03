@@ -43,8 +43,9 @@ export function PayButton() {
     <Button
       onClick={handlePayment}
       disabled={loading}
+      className="w-full"
     >
-      {loading ? "Processando..." : "Pagar com PaySuite"}
+      {loading ? "Processando..." : "Assinar plano"}
     </Button>
   );
 }
